@@ -6,14 +6,40 @@ public class SearchSort {
     //explained in readme.  one solution uses a boolean to check if a swap has been completed or not.  
     //This does not have to be recursive.  Otherwise this method is explained in the readme.
     public static void bubbleSort(String[] arr) {
-       
-              
+    	int length = arr.length;
+    	for(int i = 0; i < arr.length-1; i ++){
+    		for(int j = 0; j < length-1; j++){
+    			if(arr[j].compareTo(arr[j+1]) > 0){
+    				String temp = arr[j];
+    				arr[j] = arr[i];
+    				arr[i] = temp;
+    				
+    			}
+    			
+    		}
+    		length--;
+    	}       
     }
 
     // takes a sorted array and returns the index of the desired string or -1 if not found
     public static int binarySearch(String[] arr, String lookfor) {
+    	
         //call binarySearchHelper
-        return binarySearchHelper(//what goes in here?);
+    	int index = arr.length/2;
+    	int counter = index;
+    	for(int i = index; i > 0; i = index){
+    		counter = counter/2;
+    		if(arr[i].compareTo(lookfor) < 0){
+    			index = index - counter;
+    		
+    		}
+    		else if(arr[i].compareTo(lookfor) > 0){
+    			index = index + counter;
+    		}
+    		else
+    			return index;
+    	}
+        return -1;//what goes in here?);
     }
         
     private static int binarySearchHelper(String[] arr, int lo, int hi, String lookfor) {
